@@ -1,14 +1,14 @@
 /**
  * Created by zac on 17-6-18.
  */
-var __dirname = "/home/zac/WebstormProjects/infervision_teaser";
+var __dirname = "/home/tx-eva-21/WebstormProjects/infervision_teaser";
 
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
 
 //resource routing
-app.use('/public', express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname));
 app.use('/paper', express.static(__dirname + '/node_modules/paper/dist'));
 app.use('/sweetalert2', express.static(__dirname + '/node_modules/sweetalert2/dist/'));
 //handlebars

@@ -2,6 +2,31 @@
  * Created by zac on 17-6-20.
  */
 $(document).ready(function () {
+    var images = ['1812010641.jpg', '1812061213.jpg'];
+    var getNextImage = function () {
+        if (images.length > 0){
+            images.shift();
+            console.log("url('/resource/"+images.first+"')");
+            $('#myCanvas').css('background', "url('/resource/"+images[0]+"')")
+            paper.project.activeLayer.removeChildren();
+            paper.view.draw();
+        }
+    };
+
+    var drawBox = function () {
+        var canvas = document.getElementById('myCanvas');
+        paper.setup(canvas);
+        var path = new paper.Path();
+        path.strokeColor = 'red';
+        var start = new paper.Point(50, 50);
+        path.moveTo(start);
+        path.lineTo(start.add([50, 0]));
+        path.lineTo(start.add([50, 50]));
+        path.lineTo(start.add([0, 50]));
+        path.lineTo(start);
+        paper.view.draw();
+    }
+
     $('#myCanvas').click(function (e) {
         var offset = $(this).offset();
         swal({
@@ -28,17 +53,7 @@ $(document).ready(function () {
                 )
             }
             //drawing the correct bounding box
-            var canvas = document.getElementById('myCanvas');
-            paper.setup(canvas);
-            var path = new paper.Path();
-            path.strokeColor = 'red';
-            var start = new paper.Point(50, 50);
-            path.moveTo(start);
-            path.lineTo(start.add([50, 0]));
-            path.lineTo(start.add([50, 50]));
-            path.lineTo(start.add([0, 50]));
-            path.lineTo(start);
-            paper.view.draw();
+
 
             //marking this nodule as found
             $('#nodule').data('clicked', true);
@@ -46,6 +61,11 @@ $(document).ready(function () {
                 $('#form_container').css('display', 'inline');
             }
         });
-
     });
+
+
+
+    $('#next_button').click(getNextImage);
 });
+
+

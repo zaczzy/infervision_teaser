@@ -44,8 +44,8 @@ a:active {
 
 #myCanvas {
     z-index: 0;
-    position: fixed;
-    background: url('/public/resource/1812010641.jpg');
+    background: url('/resource/1812010641.jpg');
     width: 760px;
     height: 760px;
+    text-align: center;
 }
