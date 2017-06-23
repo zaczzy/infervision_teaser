@@ -1,0 +1,51 @@
+#form_container {
+    display: none;
+    padding: 10px;
+    z-index: 1;
+}
+#contact {
+    z-index: 2;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+#original {
+    position: absolute;
+}
+
+#wrapper {
+    width: 930px;
+    padding: 20px 0px 20px 0px;
+    margin: 0px auto;
+    position: relative;
+}
+
+#original img {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -380px;
+    margin-top: -380px;
+}
+
+#myCanvas {
+    z-index: 0;
+    position: fixed;
+    background: url('/public/resource/1812010641.jpg');
+    width: 760px;
+    height: 760px;
+}
