@@ -146,8 +146,9 @@ fieldset {
 .button_container { width: 500px; text-align: center; margin: auto}
 
 .button {
-    display: inline-block;
+    display: block;
     height: 50px;
+    margin-top: 30px;
     line-height: 50px;
     padding-right: 30px;
     padding-left: 70px;
@@ -177,7 +178,6 @@ fieldset {
     left: 0;
     width: 50px;
     background-color:rgba(0,0,0,0.5);
-
     -webkit-border-top-left-radius: 5px;
     -webkit-border-bottom-left-radius: 5px;
     -moz-border-radius-topleft: 5px;
