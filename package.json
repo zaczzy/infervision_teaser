@@ -12,6 +12,8 @@
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
     "paper": "^0.11.4",
-    "sweetalert2": "^6.6.5"
+    "sweetalert2": "^6.6.5",
+    "body-parser": "~1.17.2",
+    "mongoose": "~4.11.0"
   }
 }
