@@ -6,10 +6,10 @@ $(document).ready(function () {
     var images = ['1812010641.jpg', '1812061213.jpg'];
     var coords = {1: {xmin: 100, ymin: 520, xmax: 130, ymax: 554}, 0: {xmin: 80, ymin: 422, xmax: 99, ymax: 442}};
     var getNextImage = function () {
-        if (images.length > 0){
-            console.log("url('/resource/"+images[0]+"')");
-            $('#myCanvas').css('background', "url('/resource/"+images.shift()+"')");
-            if (paper.project){
+        if (images.length > 0) {
+            console.log("url('/resource/" + images[0] + "')");
+            $('#myCanvas').css('background', "url('/resource/" + images.shift() + "')");
+            if (paper.project) {
                 paper.project.activeLayer.removeChildren();
                 paper.view.draw();
             }
@@ -19,8 +19,29 @@ $(document).ready(function () {
                 width: 600,
                 padding: 100,
                 background: '#fff url(//bit.ly/1Nqn9HU)'
-            });
-            $('#form_container').css('display', 'inline');
+            }).then(function () {
+                $.ajax({
+                    url: '/score',
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({
+                        score: hit
+                    }),
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.result === 'success') {
+                            swal('Your score is sent!')
+                        }
+                    },
+                    error: function () {
+                        swal('request error!')
+                    },
+                    cache: false,
+                    timeout: 5000
+                });
+                $('#form_container').css('display', 'inline');
+                }
+            );
         }
     };
     getNextImage();
@@ -49,10 +70,10 @@ $(document).ready(function () {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes'
         }).then(function () {
-            if (coords[images.length]['xmin']< e.clientX - offset.left &&
+            if (coords[images.length]['xmin'] < e.clientX - offset.left &&
                 e.clientX - offset.left < coords[images.length]['xmax'] &&
                 coords[images.length]['ymin'] < e.clientY - offset.top &&
-                e.clientY - offset.top < coords[images.length]['ymax']){
+                e.clientY - offset.top < coords[images.length]['ymax']) {
                 swal(
                     'Okay!',
                     'You are right!',
@@ -73,6 +94,8 @@ $(document).ready(function () {
         });
     });
     $('#next_button').click(getNextImage);
+    // $('#display_button').click(getDoctorData);
+
 });
 
 
