@@ -40,8 +40,7 @@ $(document).ready(function () {
                     timeout: 5000
                 });
                 $('#form_container').css('display', 'inline');
-                }
-            );
+                });
         }
     };
     getNextImage();
@@ -94,7 +93,17 @@ $(document).ready(function () {
         });
     });
     $('#next_button').click(getNextImage);
-    // $('#display_button').click(getDoctorData);
+    var getDoctorData = function () {
+      $.ajax({
+          url: '/scoreboard',
+          type: 'GET',
+          contentType: 'application/json; charset=utf-8',
+          success: function (data) {
+              
+          }
+      })
+    };
+    $('#display_button').click(getDoctorData);
 
 });
 

@@ -8,7 +8,7 @@ var message = null;
 var phone = null;
 var date = null;
 
-var __dirname = "/home/tx-eva-21/WebstormProjects/infervision_teaser";
+var __dirname = "/home/zac/WebstormProjects/infervision_teaser";
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
@@ -19,12 +19,15 @@ const Schema = mongoose.Schema;
 const bodyParser = require('body-parser');
 var userSchema = new Schema({
     name: String,
-    email: String,
+    email: {
+        type: String,
+        lowercase: true
+    },
     phone: String,
     message: String,
     created_at: Date,
     score: Number
-});
+}, {runSettersOnQuery: true});
 var User = mongoose.model('User', userSchema);
 //logging
 const logger = require('morgan');
