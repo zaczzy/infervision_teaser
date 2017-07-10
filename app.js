@@ -15,7 +15,7 @@ const app = express();
 const exphbs = require('express-handlebars');
 //mongodb setup
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/teaserDB');
+mongoose.connect('mongodb://zaczzy:zhaozeyu97@ds153752.mlab.com:53752/heroku_481lrz9g');
 const Schema = mongoose.Schema;
 const bodyParser = require('body-parser');
 var userSchema = new Schema({
