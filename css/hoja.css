@@ -6,11 +6,9 @@ body {
 }
 .hoja {
   color: #0997e2;
-  position: absolute;
-  /*top: 50%;*/
+  z-index: 1;
+  position: relative;
   left: 10%;
-  margin-left: -20%;
-  /*margin-top: -140px;*/
   width: 140px;
   height: 140px;
   text-align: center;

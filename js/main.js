@@ -7,7 +7,6 @@ $(document).ready(function () {
     var coords = {1: {xmin: 100, ymin: 520, xmax: 130, ymax: 554}, 0: {xmin: 80, ymin: 422, xmax: 99, ymax: 442}};
     var getNextImage = function () {
         if (images.length > 0) {
-            console.log("url('/resource/" + images[0] + "')");
             $('#myCanvas').css('background', "url('/resource/" + images.shift() + "')");
             if (paper.project) {
                 paper.project.activeLayer.removeChildren();
@@ -30,7 +29,7 @@ $(document).ready(function () {
                     dataType: 'json',
                     success: function (data) {
                         if (data.result === 'success') {
-                            swal('Your score is sent!')
+                            console.log('score sent')
                         }
                     },
                     error: function () {
@@ -40,7 +39,7 @@ $(document).ready(function () {
                     timeout: 5000
                 });
                 $('#form_container').css('display', 'inline');
-                });
+            });
         }
     };
     getNextImage();
@@ -93,18 +92,78 @@ $(document).ready(function () {
         });
     });
     $('#next_button').click(getNextImage);
+    var displayScores = function (data) {
+        if (data.length > 0) {
+            for (i = 0; i < data.length ; i++) {
+                var $tr = $('<tr>');
+                var $td = $('<td>');
+                $td.text(data[i].name);
+                $tr.append($td);
+                $td = $('<td>');
+                $td.text(data[i].email);
+                $tr.append($td);
+                $td = $('<td>');
+                $td.text(data[i].phone);
+                $tr.append($td);
+                $td = $('<td>');
+                $td.text(data[i].message);
+                $tr.append($td);
+                $td = $('<td>');
+                $td.text(data[i].created_at);
+                $tr.append($td);
+                $td = $('<td>');
+                $td.text(data[i].score);
+                $tr.append($td);
+                $('#scoreboard table tbody').append($tr);
+                $('body').append( $('<link rel="stylesheet"/>').attr('href', '/css/scoreboard.css') );
+            }
+            $('#scoreboard').css('display', 'inline')
+        }
+    };
     var getDoctorData = function () {
-      $.ajax({
-          url: '/scoreboard',
-          type: 'GET',
-          contentType: 'application/json; charset=utf-8',
-          success: function (data) {
-              
-          }
-      })
+        $.ajax({
+            url: '/scoreboard',
+            type: 'GET',
+            dataType: 'json',
+            success: displayScores,
+            error: function () {
+                swal('Scoreboard failed!', null,  'error')
+            }
+        })
     };
     $('#display_button').click(getDoctorData);
-
+    $('#contact-submit').click(function () {
+        console.log('trying to submit');
+        $('#contact').ajaxSubmit({
+            url: '/',
+            type: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                swal(data.result, null, data.status);
+            },
+            error: function () {
+                swal('Ajax error!', null, 'error');
+            }
+        })
+    });
+    $('#clear_button').click(function () {
+        $.ajax({
+            url: '/clear',
+            type: 'POST',
+            dataType: 'json',
+            success: function (err) {
+                if (!err.err) {
+                    swal('Database Cleared!', null, 'success');
+                    $('#scoreboard').css('display', 'none')
+                } else {
+                    swal(err.err, null, 'error')
+                }
+            },
+            error: function () {
+                swal('Ajax Error!', null, 'error')
+            }
+        })
+    })
 });
 
 

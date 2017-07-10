@@ -1,14 +1,15 @@
+
 /**
  * Created by zac on 17-6-18.
  */
 var name = null;
 var email = null;
-var score = null;
+var score = -1;
 var message = null;
 var phone = null;
 var date = null;
 
-var __dirname = "/home/zac/WebstormProjects/infervision_teaser";
+var __dirname = "C:\\Users\\Zachary Zhao\\WebstormProjects\\infervision_teaser";
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
@@ -53,7 +54,7 @@ app.listen(3000, function () {
 });
 
 var saveData = function () {
-    if (name && email && phone && message && score) {
+    if (name && email && phone && message && score > -1) {
         var doc = new User({
             name: name,
             email: email,
@@ -62,10 +63,17 @@ var saveData = function () {
             created_at: new Date().toDateString(),
             score: score
         });
+        var error;
         doc.save(function (e) {
-            if (e) swal(e); else swal('Doctor data saved to database!', 'success')
+            name = email = phone = message = null;
+            score = -1;
+            error = e
         });
-        name = email = phone = message = score = null
+        if (error) {
+            return {result: error, status: 'error'}
+        } else {
+            return {result: 'Doctor data has been saved!', status: 'success'}
+        }
     }
 };
 
@@ -74,9 +82,11 @@ app.post('/', function (req, res) {
    console.log('Your email is ' + req.body.email);
    console.log('Your phone number is ' + req.body.phone);
    console.log('Your message is ' + req.body.message);
-   console.log('Entry created at: ' + new Date());
-   res.render('home');
-   saveData();
+   name = req.body.name;
+   email = req.body.email;
+   phone = req.body.phone;
+   message = req.body.message;
+   res.json(saveData())
 });
 
 app.post('/score', function (req, res) {
@@ -85,4 +95,13 @@ app.post('/score', function (req, res) {
     res.json({result: 'success', status: 200});
     saveData();
 });
-
+app.get('/scoreboard', function (req, res) {
+    User.find({}, function (err, docs) {
+        res.json(docs)
+    })
+});
+app.post('/clear', function (req, res) {
+   User.remove({}, function (err) {
+       res.json({err: err})
+   })
+});

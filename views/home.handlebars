@@ -1,5 +1,5 @@
+<div class="hoja" style="display: block">InferVision</div>
 <div id="wrapper">
-    <div class="hoja">InferVision</div>
     <canvas id="myCanvas" resize></canvas>
     <div class="button_container">
         <a id='next_button' class="button turquoise"><span>✓</span>Next Challenge</a>
@@ -8,27 +8,41 @@
     <div class="button_container">
         <a id='display_button' class="button turquoise"><span>✓</span>Display Scoreboard</a>
     </div>
-
-    <div class="container" id="form_container">
-        <form id="contact" action="/" method="post">
-            <h3>Leave Your Contacts</h3>
-            <h4>Contact us for the best AI solution for lung cancer detection!</h4>
-            <fieldset>
-                <input placeholder="Your name" type="text" name="name" tabindex="1" required autofocus>
-            </fieldset>
-            <fieldset>
-                <input placeholder="Your Email Address" name="email" type="email" tabindex="2" required>
-            </fieldset>
-            <fieldset>
-                <input placeholder="Your Phone Number (optional)" name="phone" type="tel" tabindex="3" required>
-            </fieldset>
-            <fieldset>
-                <textarea placeholder="Type your message here...." name="message" tabindex="5" required></textarea>
-            </fieldset>
-            <fieldset>
-                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-            </fieldset>
-        </form>
+    <div class="button_container">
+        <a id='clear_button' class="button red"><span>✓</span>Clear DataBase</a>
+    </div>
+</div>
+<div class="container" id="form_container">
+    <form id="contact">
+        <h3>Leave Your Contacts</h3>
+        <h4>Contact us for the best AI solution for lung cancer detection!</h4>
+        <fieldset>
+            <input placeholder="Your name" type="text" name="name" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+            <input placeholder="Your Email Address" name="email" type="email" tabindex="2" required>
+        </fieldset>
+        <fieldset>
+            <input placeholder="Your Phone Number (optional)" name="phone" type="tel" tabindex="3" required>
+        </fieldset>
+        <fieldset>
+            <textarea placeholder="Type your message here...." name="message" tabindex="5" required></textarea>
+        </fieldset>
+        <fieldset>
+            <button name="submit" type="button" id="contact-submit" >Submit</button>
+        </fieldset>
+    </form>
+</div>
+<div id="scoreboard" style="display: none">
+    <h2>Table with a sticky col</h2>
+    <div style="width: 640px;">
+        <div class="scrollable sticky-cols">
+            <table lang="en">
+                <thead>
+                <tr><th class="sticky col">Name<th>Email<th>Phone<th>Message<th>Date<th>Score
+                <tbody>
+            </table>
+        </div>
     </div>
 </div>
 <link rel="stylesheet" href="/css/hoja.css">
