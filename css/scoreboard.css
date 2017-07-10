@@ -1,0 +1,56 @@
+.scrollable {
+    width:-moz-fit-content;
+    width:-ms-fit-content;
+    width:-webkit-fit-content;
+    width:fit-content;
+}
+
+.scrollable.sticky-rows {
+    overflow-y: scroll;
+    max-height: 100%;
+}
+
+.scrollable.sticky-cols {
+    overflow-x: scroll;
+    max-width: 100%;
+}
+
+.scrollable.sticky-cols > table {
+    width: -moz-max-content;
+    width: -ms-max-content;
+    width: -webkit-max-content;
+    width: max-content;
+}
+
+
+.scrollable .sticky {
+    position: sticky;
+}
+
+.scrollable .sticky.row {
+    top: 0;
+    z-index: 1;
+}
+.scrollable .sticky.col {
+    left: 0;
+}
+
+
+.scrollable {
+    border: thin solid silver;
+}
+.scrollable > table {
+    border-spacing: 0;
+}
+.scrollable td,
+.scrollable th {
+    border-right: thin solid silver;
+    border-bottom: thin solid silver;
+    padding: 1em;
+}
+.scrollable td.sticky,
+.scrollable th.sticky,
+.scrollable .sticky td,
+.scrollable .sticky th {
+    background:#ffa;
+}
