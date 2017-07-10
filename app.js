@@ -9,7 +9,7 @@ var message = null;
 var phone = null;
 var date = null;
 
-var __dirname = "C:\\Users\\Zachary Zhao\\WebstormProjects\\infervision_teaser";
+var __dirname = ".";
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
