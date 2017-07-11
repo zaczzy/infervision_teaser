@@ -16,7 +16,7 @@ body {
     color:#000;
     font-family: "Roboto", Helvetica, Arial, sans-serif;
     font-weight: 100;
-    font-size: 12px;
+    font-size: 20px;
     line-height: 30px;
     overflow: scroll;
 }
@@ -146,8 +146,8 @@ fieldset {
 
 .button {
     display: block;
-    height: 50px;
-    line-height: 50px;
+    height: 150px;
+    line-height: 150px;
     padding-right: 30px;
     padding-left: 70px;
     position: relative;
@@ -155,7 +155,7 @@ fieldset {
     color:rgb(255,255,255);
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 5px;
     margin-bottom: 15px;
     border-radius: 5px;
     -moz-border-radius: 5px;
