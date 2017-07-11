@@ -33,7 +33,7 @@ body {
 #contact input[type="url"],
 #contact textarea,
 #contact button[type="submit"] {
-    font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+    font: 400 25px/40px "Roboto", Helvetica, Arial, sans-serif;
 }
 
 #contact {
@@ -102,7 +102,7 @@ fieldset {
     color: #FFF;
     margin: 0 0 5px;
     padding: 10px;
-    font-size: 15px;
+    font-size: 40px;
 }
 
 #contact button:hover {
