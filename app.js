@@ -9,7 +9,7 @@ var message = null;
 var phone = null;
 var date = null;
 
-var __dirname = ".";
+var __dirname = "C:\\Users\\Zachary Zhao\\WebstormProjects\\infervision_teaser";
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
@@ -41,12 +41,12 @@ db.once('open', function () {
     app.use('/', express.static(__dirname));
     app.use('/paper', express.static(__dirname + '/node_modules/paper/dist'));
     app.use('/sweetalert2', express.static(__dirname + '/node_modules/sweetalert2/dist/'));
+    app.use('/jquery-ui', express.static(__dirname + '/node_modules/jquery-ui'));
 //handlebars
     app.engine('handlebars', exphbs({defaultLayout: 'main', layoutsDir: __dirname + '/views/layouts'}));
     app.set('view engine', 'handlebars');
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(bodyParser.json());
-
 //http request routing
     app.get('/', function (req, res) {
         res.render('home')

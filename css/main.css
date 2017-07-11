@@ -28,26 +28,32 @@ a:active {
 }
 
 #wrapper {
-    /*width: 930px;*/
-    /*padding: 20px 0px 20px 0px;*/
-    /*margin: 0px auto;*/
     position: relative;
 }
 
-#original img {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    margin-left: -380px;
-    margin-top: -380px;
+#image{
+    /*position: fixed;*/
+    /*left: 50%;*/
+    /*top: 50%;*/
+    /*margin-left: -380px;*/
+    /*margin-top: -380px;*/
+    margin-left: 0;
+    margin-top: 0;
+    z-index: -1;
 }
 
 #myCanvas {
     z-index: 0;
     width: 760px;
     height: 760px;
-    text-align: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    /*text-align: center;*/
+    margin-left: 0;
+    margin-right: 0;
+    position: absolute;
+}
+
+#slider {
+    width: 100%;
+    height: auto;
+    z-index: 3;
 }

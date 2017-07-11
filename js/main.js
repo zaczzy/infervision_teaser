@@ -4,10 +4,47 @@
 $(document).ready(function () {
     var hit = 0;
     var images = ['1812010641.jpg', '1812061213.jpg'];
+    var originalWidth;
+    var originalHeight;
+    var currentFraction = 1;
     var coords = {1: {xmin: 100, ymin: 520, xmax: 130, ymax: 554}, 0: {xmin: 80, ymin: 422, xmax: 99, ymax: 442}};
+    $("#infoSlider").text('100%').text('100%');
+    function updateCoords(fraction) {
+        for (i in coords) {
+            coords[i]['xmin'] /= currentFraction;
+            coords[i]['ymin'] /= currentFraction;
+            coords[i]['xmax'] /= currentFraction;
+            coords[i]['ymax'] /= currentFraction;
+            coords[i]['xmin'] *= fraction;
+            coords[i]['ymin'] *= fraction;
+            coords[i]['xmax'] *= fraction;
+            coords[i]['ymax'] *= fraction;
+        }
+        currentFraction = fraction;
+    }
+
+    $("#slider").slider({
+        value: 0,
+        min: -20,
+        max: 150,
+        step: 10,
+        slide: function (event, ui) {
+            var fraction = (1 + ui.value / 100),
+                newWidth = originalWidth * fraction,
+                newHeight = originalHeight * fraction;
+            $("#infoSlider").text(Math.floor(fraction * 100) + '%').text(Math.floor(fraction * 100) + '%');
+            $("#image").width(newWidth).height(newHeight);
+            $("#myCanvas").width(newWidth).height(newHeight);
+            updateCoords(fraction)
+        }
+    });
+    $('#drag').draggable();
     var getNextImage = function () {
         if (images.length > 0) {
-            $('#myCanvas').css('background', "url('/resource/" + images.shift() + "')");
+            $('#image').attr('src', '/resource/' + images.shift()).on('load', function () {
+                originalWidth = $(this).width();
+                originalHeight = $(this).height();
+            });
             if (paper.project) {
                 paper.project.activeLayer.removeChildren();
                 paper.view.draw();
@@ -94,7 +131,7 @@ $(document).ready(function () {
     $('#next_button').click(getNextImage);
     var displayScores = function (data) {
         if (data.length > 0) {
-            for (i = 0; i < data.length ; i++) {
+            for (i = 0; i < data.length; i++) {
                 var $tr = $('<tr>');
                 var $td = $('<td>');
                 $td.text(data[i].name);
@@ -115,7 +152,7 @@ $(document).ready(function () {
                 $td.text(data[i].score);
                 $tr.append($td);
                 $('#scoreboard table tbody').append($tr);
-                $('body').append( $('<link rel="stylesheet"/>').attr('href', '/css/scoreboard.css') );
+                $('body').append($('<link rel="stylesheet"/>').attr('href', '/css/scoreboard.css'));
             }
             $('#scoreboard').css('display', 'inline')
         }
@@ -127,7 +164,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: displayScores,
             error: function () {
-                swal('Scoreboard failed!', null,  'error')
+                swal('Scoreboard failed!', null, 'error')
             }
         })
     };
