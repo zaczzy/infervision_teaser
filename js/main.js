@@ -49,6 +49,7 @@ $(document).ready(function () {
                 paper.project.activeLayer.removeChildren();
                 paper.view.draw();
             }
+            currentFraction = 1;
         } else {
             swal({
                 title: 'Your final score: ' + hit,
