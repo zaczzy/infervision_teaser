@@ -3,11 +3,57 @@
  */
 $(document).ready(function () {
     var hit = 0;
-    var images = ['1812010641.jpg', '1812061213.jpg'];
+    var images = [ 'R01427633.jpg',
+        'R01442521.jpg',
+        'R01586924.jpg',
+        'R01769494.jpg',
+        'R01812637.jpg',
+        'R01841463.jpg',
+        'R01872011.jpg',
+        'R01876153.jpg',
+        'R01911693.jpg',
+        'R01924098.jpg',
+        'R01968407.jpg',
+        'R01970771.jpg',
+        'R01975914.jpg',
+        'R01976356.jpg',
+        'R02035305.jpg',
+        'R02039941.jpg',
+        'R02059281.jpg',
+        'R02064703.jpg',
+        'R02085621.jpg',
+        'R02175885.jpg',
+        'R02177296.jpg',
+        'R02223641.jpg',
+        'R02252523.jpg' ];
     var originalWidth;
     var originalHeight;
     var currentFraction = 1;
-    var coords = {1: {xmin: 100, ymin: 520, xmax: 130, ymax: 554}, 0: {xmin: 80, ymin: 422, xmax: 99, ymax: 442}};
+    var coords = {
+        0: { xmin: 398, ymin: 1224, xmax: 758, ymax: 1560 },
+        1: { xmin: 907, ymin: 988, xmax: 1253, ymax: 1293 },
+        2: { xmin: 876, ymin: 932, xmax: 1156, ymax: 1170 },
+        3: { xmin: 396, ymin: 1802, xmax: 559, ymax: 1981 },
+        4: { xmin: 800, ymin: 728, xmax: 1042, ymax: 924 },
+        5: { xmin: 1179, ymin: 1071, xmax: 1379, ymax: 1300 },
+        6: { xmin: 771, ymin: 600, xmax: 974, ymax: 804 },
+        7: { xmin: 603, ymin: 1434, xmax: 769, ymax: 1601 },
+        8: { xmin: 763, ymin: 1219, xmax: 967, ymax: 1394 },
+        9: { xmin: 700, ymin: 1268, xmax: 956, ymax: 1528 },
+        10: { xmin: 1149, ymin: 1946, xmax: 1358, ymax: 2163 },
+        11: { xmin: 967, ymin: 677, xmax: 1111, ymax: 837 },
+        12: { xmin: 1955, ymin: 1676, xmax: 2255, ymax: 1947 },
+        13: { xmin: 736, ymin: 1229, xmax: 1145, ymax: 1654 },
+        14: { xmin: 1707, ymin: 1345, xmax: 2052, ymax: 1804 },
+        15: { xmin: 1966, ymin: 1701, xmax: 2271, ymax: 2001 },
+        16: { xmin: 1837, ymin: 1013, xmax: 2008, ymax: 1184 },
+        17: { xmin: 1849, ymin: 1707, xmax: 2233, ymax: 2111 },
+        18: { xmin: 439, ymin: 1522, xmax: 785, ymax: 1876 },
+        19: { xmin: 1092, ymin: 556, xmax: 1363, ymax: 823 },
+        20: { xmin: 1899, ymin: 524, xmax: 2141, ymax: 761 },
+        21: { xmin: 1783, ymin: 823, xmax: 2070, ymax: 1106 },
+        22: { xmin: 527, ymin: 1315, xmax: 697, ymax: 1478 } };
+    var count = 0;
     $("#infoSlider").text('100%').text('100%');
     function updateCoords(fraction) {
         for (i in coords) {
@@ -25,8 +71,8 @@ $(document).ready(function () {
 
     $("#slider").slider({
         value: 0,
-        min: -20,
-        max: 150,
+        min: -100,
+        max: 0,
         step: 10,
         slide: function (event, ui) {
             var fraction = (1 + ui.value / 100),
@@ -53,6 +99,7 @@ $(document).ready(function () {
                 paper.project.activeLayer.removeChildren();
                 paper.view.draw();
             }
+            count++;
         } else {
             swal({
                 title: 'Your final score: ' + hit,
@@ -109,10 +156,10 @@ $(document).ready(function () {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes'
         }).then(function () {
-            if (coords[images.length]['xmin'] < e.clientX - offset.left &&
-                e.clientX - offset.left < coords[images.length]['xmax'] &&
-                coords[images.length]['ymin'] < e.clientY - offset.top &&
-                e.clientY - offset.top < coords[images.length]['ymax']) {
+            if (coords[count]['xmin'] < e.clientX - offset.left &&
+                e.clientX - offset.left < coords[count]['xmax'] &&
+                coords[count]['ymin'] < e.clientY - offset.top &&
+                e.clientY - offset.top < coords[count]['ymax']) {
                 swal(
                     'Okay!',
                     'You are right!',
@@ -127,8 +174,8 @@ $(document).ready(function () {
                 )
             }
             //drawing the correct bounding box
-            drawBox(coords[images.length]['xmin'], coords[images.length]['ymin'],
-                coords[images.length]['xmax'], coords[images.length]['ymax']);
+            drawBox(coords[count]['xmin'], coords[count]['ymin'],
+                coords[count]['xmax'], coords[count]['ymax']);
         });
     });
     $('#next_button').click(getNextImage);

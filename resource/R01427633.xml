@@ -1,0 +1,26 @@
+<annotation>
+  <folder>KG_anno</folder>
+  <filename>R01427633</filename>
+  <path>/home/tx-sh-03/Documents/KG_anno/R01427633.xml</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>0</width>
+    <height>0</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>nodule</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>398</xmin>
+      <ymin>1224</ymin>
+      <xmax>758</xmax>
+      <ymax>1560</ymax>
+    </bndbox>
+  </object>
+</annotation>

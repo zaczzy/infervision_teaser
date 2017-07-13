@@ -32,11 +32,6 @@ a:active {
 }
 
 #image{
-    /*position: fixed;*/
-    /*left: 50%;*/
-    /*top: 50%;*/
-    /*margin-left: -380px;*/
-    /*margin-top: -380px;*/
     margin-left: 0;
     margin-top: 0;
     z-index: -1;
@@ -44,8 +39,8 @@ a:active {
 
 #myCanvas {
     z-index: 0;
-    width: 760px;
-    height: 760px;
+    width: 2840px;
+    height: 2849px;
     /*text-align: center;*/
     margin-left: 0;
     margin-right: 0;
