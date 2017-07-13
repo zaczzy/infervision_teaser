@@ -106,11 +106,10 @@
 	position: absolute;
 	z-index: 3;
 	width: 30px;
-	height: 40px;
+	height: 110px;
 	cursor: default;
 	-ms-touch-action: none;
 	touch-action: none;
-	padding-left: 5px;
 }
 .ui-slider .ui-slider-range {
 	position: absolute;

@@ -49,7 +49,7 @@ $(document).ready(function () {
                 paper.project.activeLayer.removeChildren();
                 paper.view.draw();
             }
-            currentFraction = 1;
+            updateCoords(1);
         } else {
             swal({
                 title: 'Your final score: ' + hit,
@@ -126,7 +126,6 @@ $(document).ready(function () {
             //drawing the correct bounding box
             drawBox(coords[images.length]['xmin'], coords[images.length]['ymin'],
                 coords[images.length]['xmax'], coords[images.length]['ymax']);
-            //marking this nodule as found
         });
     });
     $('#next_button').click(getNextImage);
