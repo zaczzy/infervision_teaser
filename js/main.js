@@ -32,7 +32,7 @@ $(document).ready(function () {
             var fraction = (1 + ui.value / 100),
                 newWidth = originalWidth * fraction,
                 newHeight = originalHeight * fraction;
-            $("#infoSlider").text(Math.floor(fraction * 100) + '%').text(Math.floor(fraction * 100) + '%');
+            $("#infoSlider").text(Math.floor(fraction * 100) + '%');
             $("#image").width(newWidth).height(newHeight);
             $("#myCanvas").width(newWidth).height(newHeight);
             updateCoords(fraction)
@@ -41,15 +41,18 @@ $(document).ready(function () {
     $('#drag').draggable();
     var getNextImage = function () {
         if (images.length > 0) {
+            $("#infoSlider").text('100%');
             $('#image').attr('src', '/resource/' + images.shift()).on('load', function () {
+                $("#image").width(originalWidth).height(originalHeight);
+                $("#myCanvas").width(originalWidth).height(originalHeight);
                 originalWidth = $(this).width();
                 originalHeight = $(this).height();
             });
+            updateCoords(1);
             if (paper.project) {
                 paper.project.activeLayer.removeChildren();
                 paper.view.draw();
             }
-            updateCoords(1);
         } else {
             swal({
                 title: 'Your final score: ' + hit,
