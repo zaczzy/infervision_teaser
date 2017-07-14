@@ -3,7 +3,8 @@
  */
 $(document).ready(function () {
     var hit = 0;
-    var images = [ 'R01427633.jpg',
+    var images = [
+        'R01427633.jpg',
         'R01442521.jpg',
         'R01586924.jpg',
         'R01769494.jpg',
@@ -13,19 +14,20 @@ $(document).ready(function () {
         'R01876153.jpg',
         'R01911693.jpg',
         'R01924098.jpg',
-        'R01968407.jpg',
-        'R01970771.jpg',
-        'R01975914.jpg',
-        'R01976356.jpg',
-        'R02035305.jpg',
-        'R02039941.jpg',
-        'R02059281.jpg',
-        'R02064703.jpg',
-        'R02085621.jpg',
-        'R02175885.jpg',
-        'R02177296.jpg',
-        'R02223641.jpg',
-        'R02252523.jpg' ];
+        // 'R01968407.jpg',
+        // 'R01970771.jpg',
+        // 'R01975914.jpg',
+        // 'R01976356.jpg',
+        // 'R02035305.jpg',
+        // 'R02039941.jpg',
+        // 'R02059281.jpg',
+        // 'R02064703.jpg',
+        // 'R02085621.jpg',
+        // 'R02175885.jpg',
+        // 'R02177296.jpg',
+        // 'R02223641.jpg',
+        // 'R02252523.jpg'
+    ];
     var originalWidth;
     var originalHeight;
     var currentFraction = 1;
@@ -41,18 +43,19 @@ $(document).ready(function () {
         8: { xmin: 763, ymin: 1219, xmax: 967, ymax: 1394 },
         9: { xmin: 700, ymin: 1268, xmax: 956, ymax: 1528 },
         10: { xmin: 1149, ymin: 1946, xmax: 1358, ymax: 2163 },
-        11: { xmin: 967, ymin: 677, xmax: 1111, ymax: 837 },
-        12: { xmin: 1955, ymin: 1676, xmax: 2255, ymax: 1947 },
-        13: { xmin: 736, ymin: 1229, xmax: 1145, ymax: 1654 },
-        14: { xmin: 1707, ymin: 1345, xmax: 2052, ymax: 1804 },
-        15: { xmin: 1966, ymin: 1701, xmax: 2271, ymax: 2001 },
-        16: { xmin: 1837, ymin: 1013, xmax: 2008, ymax: 1184 },
-        17: { xmin: 1849, ymin: 1707, xmax: 2233, ymax: 2111 },
-        18: { xmin: 439, ymin: 1522, xmax: 785, ymax: 1876 },
-        19: { xmin: 1092, ymin: 556, xmax: 1363, ymax: 823 },
-        20: { xmin: 1899, ymin: 524, xmax: 2141, ymax: 761 },
-        21: { xmin: 1783, ymin: 823, xmax: 2070, ymax: 1106 },
-        22: { xmin: 527, ymin: 1315, xmax: 697, ymax: 1478 } };
+        // 11: { xmin: 967, ymin: 677, xmax: 1111, ymax: 837 },
+        // 12: { xmin: 1955, ymin: 1676, xmax: 2255, ymax: 1947 },
+        // 13: { xmin: 736, ymin: 1229, xmax: 1145, ymax: 1654 },
+        // 14: { xmin: 1707, ymin: 1345, xmax: 2052, ymax: 1804 },
+        // 15: { xmin: 1966, ymin: 1701, xmax: 2271, ymax: 2001 },
+        // 16: { xmin: 1837, ymin: 1013, xmax: 2008, ymax: 1184 },
+        // 17: { xmin: 1849, ymin: 1707, xmax: 2233, ymax: 2111 },
+        // 18: { xmin: 439, ymin: 1522, xmax: 785, ymax: 1876 },
+        // 19: { xmin: 1092, ymin: 556, xmax: 1363, ymax: 823 },
+        // 20: { xmin: 1899, ymin: 524, xmax: 2141, ymax: 761 },
+        // 21: { xmin: 1783, ymin: 823, xmax: 2070, ymax: 1106 },
+        // 22: { xmin: 527, ymin: 1315, xmax: 697, ymax: 1478 }
+    };
     var count = 0;
     $("#infoSlider").text('100%').text('100%');
     function updateCoords(fraction) {
