@@ -9,7 +9,7 @@ var message = null;
 var phone = null;
 var date = null;
 
-var __dirname = ".";
+var __dirname = "/home/admintmp/infervision_teaser";
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
