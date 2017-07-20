@@ -1,12 +1,8 @@
-<div class="hoja" style="display: block">InferVision</div>
+<div id="header" >
+    <div class="hoja">InferVision</div>
+</div>
 <div id="wrapper">
-    <div id="slider">
-        <span id="infoSlider"></span>
-    </div>
-    <div id="drag">
-        <canvas id="myCanvas"></canvas>
-        <img id="image">
-    </div>
+
     <div class="button_container">
         <a id='next_button' class="button turquoise"><span>✓</span>Next Challenge</a>
     </div>
@@ -16,6 +12,31 @@
     </div>
     <div class="button_container">
         <a id='clear_button' class="button red"><span>✓</span>Clear DataBase</a>
+    </div>
+    <div id="scoreboard" style="display: none">
+        <h2>HIGHSCORES</h2>
+        <div style="width: 90%">
+            <div class="scrollable sticky-cols">
+                <table lang="en">
+                    <thead>
+                    <tr>
+                        <th class="sticky col">Name
+                        <th class="sticky col">Email
+                        <th class="sticky col">Phone
+                        <th class="sticky col">Message
+                        <th class="sticky col">Date
+                        <th class="sticky col">Score
+                    <tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="slider">
+        <span id="infoSlider"></span>
+    </div>
+    <div id="drag">
+        <canvas id="myCanvas"></canvas>
+        <img id="image">
     </div>
 </div>
 <div class="container" id="form_container">
@@ -35,21 +56,9 @@
             <textarea placeholder="Type your message here...." name="message" tabindex="5" required></textarea>
         </fieldset>
         <fieldset>
-            <button name="submit" type="button" id="contact-submit" >Submit</button>
+            <button name="submit" type="button" id="contact-submit">Submit</button>
         </fieldset>
     </form>
-</div>
-<div id="scoreboard" style="display: none">
-    <h2>Table with a sticky col</h2>
-    <div style="width: 640px;">
-        <div class="scrollable sticky-cols">
-            <table lang="en">
-                <thead>
-                <tr><th class="sticky col">Name<th>Email<th>Phone<th>Message<th>Date<th>Score
-                <tbody>
-            </table>
-        </div>
-    </div>
 </div>
 <link rel="stylesheet" href="/css/hoja.css">
 <link rel="stylesheet" href="/css/container.css">

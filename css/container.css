@@ -19,6 +19,7 @@ body {
     font-size: 20px;
     line-height: 30px;
     overflow: scroll;
+    background-color: rgb(137, 207, 240);
 }
 
 .container {
@@ -146,6 +147,7 @@ fieldset {
 
 .button {
     display: block;
+    z-index: 3;
     height: 150px;
     line-height: 150px;
     padding-right: 30px;

@@ -74,14 +74,14 @@ $(document).ready(function () {
 
     $("#slider").slider({
         value: 0,
-        min: -100,
+        min: -95,
         max: 0,
-        step: 10,
+        step: 5,
         slide: function (event, ui) {
             var fraction = (1 + ui.value / 100),
                 newWidth = originalWidth * fraction,
                 newHeight = originalHeight * fraction;
-            $("#infoSlider").text(Math.floor(fraction * 100) + '%');
+            $("#infoSlider").text('Zoom: ' + Math.floor(fraction * 100) + '%');
             $("#image").width(newWidth).height(newHeight);
             $("#myCanvas").width(newWidth).height(newHeight);
             updateCoords(fraction)
@@ -90,7 +90,7 @@ $(document).ready(function () {
     $('#drag').draggable();
     var getNextImage = function () {
         if (images.length > 0) {
-            $("#infoSlider").text('100%');
+            $("#infoSlider").text('Zoom: 100%');
             $('#image').attr('src', '/resource/' + images.shift()).on('load', function () {
                 $("#image").width(originalWidth).height(originalHeight);
                 $("#myCanvas").width(originalWidth).height(originalHeight);

@@ -53,3 +53,6 @@ a:active {
     margin-left: 10%;
     z-index: 3;
 }
+#header {
+    background-color: #0997e2;
+}

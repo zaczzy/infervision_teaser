@@ -1,4 +1,3 @@
-
 /**
  * Created by zac on 17-6-18.
  */
@@ -9,7 +8,7 @@ var message = null;
 var phone = null;
 var date = null;
 
-var __dirname = "/home/admintmp/infervision_teaser";
+var __dirname = "/home/zac/WebstormProjects/infervision_teaser";
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
