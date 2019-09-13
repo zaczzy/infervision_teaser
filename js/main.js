@@ -32,17 +32,17 @@ $(document).ready(function () {
     var originalHeight;
     var currentFraction = 1;
     var coords = {
-        0: { xmin: 398, ymin: 1224, xmax: 758, ymax: 1560 },
-        1: { xmin: 907, ymin: 988, xmax: 1253, ymax: 1293 },
-        2: { xmin: 876, ymin: 932, xmax: 1156, ymax: 1170 },
-        3: { xmin: 396, ymin: 1802, xmax: 559, ymax: 1981 },
-        4: { xmin: 800, ymin: 728, xmax: 1042, ymax: 924 },
-        5: { xmin: 1179, ymin: 1071, xmax: 1379, ymax: 1300 },
-        6: { xmin: 771, ymin: 600, xmax: 974, ymax: 804 },
-        7: { xmin: 603, ymin: 1434, xmax: 769, ymax: 1601 },
-        8: { xmin: 763, ymin: 1219, xmax: 967, ymax: 1394 },
-        9: { xmin: 700, ymin: 1268, xmax: 956, ymax: 1528 },
-        10: { xmin: 1149, ymin: 1946, xmax: 1358, ymax: 2163 },
+        0: {xmin: 398, ymin: 1224, xmax: 758, ymax: 1560},
+        1: {xmin: 907, ymin: 988, xmax: 1253, ymax: 1293},
+        2: {xmin: 876, ymin: 932, xmax: 1156, ymax: 1170},
+        3: {xmin: 396, ymin: 1802, xmax: 559, ymax: 1981},
+        4: {xmin: 800, ymin: 728, xmax: 1042, ymax: 924},
+        5: {xmin: 1179, ymin: 1071, xmax: 1379, ymax: 1300},
+        6: {xmin: 771, ymin: 600, xmax: 974, ymax: 804},
+        7: {xmin: 603, ymin: 1434, xmax: 769, ymax: 1601},
+        8: {xmin: 763, ymin: 1219, xmax: 967, ymax: 1394},
+        9: {xmin: 700, ymin: 1268, xmax: 956, ymax: 1528},
+        10: {xmin: 1149, ymin: 1946, xmax: 1358, ymax: 2163},
         // 11: { xmin: 967, ymin: 677, xmax: 1111, ymax: 837 },
         // 12: { xmin: 1955, ymin: 1676, xmax: 2255, ymax: 1947 },
         // 13: { xmin: 736, ymin: 1229, xmax: 1145, ymax: 1654 },
@@ -57,7 +57,7 @@ $(document).ready(function () {
         // 22: { xmin: 527, ymin: 1315, xmax: 697, ymax: 1478 }
     };
     var count = 0;
-    $("#infoSlider").text('100%').text('100%');
+    // $("#infoSlider").text('100%').text('100%');
     function updateCoords(fraction) {
         for (i in coords) {
             coords[i]['xmin'] /= currentFraction;
@@ -77,11 +77,12 @@ $(document).ready(function () {
         min: -95,
         max: 0,
         step: 5,
+        orientation: 'vertical',
         slide: function (event, ui) {
             var fraction = (1 + ui.value / 100),
                 newWidth = originalWidth * fraction,
                 newHeight = originalHeight * fraction;
-            $("#infoSlider").text('Zoom: ' + Math.floor(fraction * 100) + '%');
+            // $("#infoSlider").text('Zoom: ' + Math.floor(fraction * 100) + '%');
             $("#image").width(newWidth).height(newHeight);
             $("#myCanvas").width(newWidth).height(newHeight);
             updateCoords(fraction)
@@ -89,9 +90,15 @@ $(document).ready(function () {
     });
     $('#drag').draggable();
     var getNextImage = function () {
+        $('#wrapper').css('display','none');
+        var $body = $('body');
+        $body.append("<div id='loader'><h2 style='display: block; margin: auto; text-align: center'>Loading...</h2><img src='/resource/2.gif' style='display: block; margin:auto'/></div>");
         if (images.length > 0) {
-            $("#infoSlider").text('Zoom: 100%');
+            // $("#infoSlider").text('Zoom: 100%');
             $('#image').attr('src', '/resource/' + images.shift()).on('load', function () {
+                $('#loader').remove();
+
+                $('#wrapper').css('display', 'block');
                 $("#image").width(originalWidth).height(originalHeight);
                 $("#myCanvas").width(originalWidth).height(originalHeight);
                 originalWidth = $(this).width();
@@ -115,7 +122,7 @@ $(document).ready(function () {
                     type: 'POST',
                     contentType: 'application/json; charset=utf-8',
                     data: JSON.stringify({
-                        score: hit
+                        scorebuttons: hit
                     }),
                     dataType: 'json',
                     success: function (data) {
@@ -127,7 +134,7 @@ $(document).ready(function () {
                         swal('request error!')
                     },
                     cache: false,
-                    timeout: 5000
+                    timeout: 2000
                 });
                 $('#form_container').css('display', 'inline');
             });
@@ -155,26 +162,36 @@ $(document).ready(function () {
             text: "You won't be able to revert this!",
             type: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
+            width: 1000,
+            padding: 50,
+            confirmButtonColor: '#394dff',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes'
+            confirmButtonText: 'Yes',
+            confirmButtonClass: 'btn-confirm',
+            cancelButtonClass: 'btn-cancel'
         }).then(function () {
             if (coords[count]['xmin'] < e.clientX - offset.left &&
                 e.clientX - offset.left < coords[count]['xmax'] &&
                 coords[count]['ymin'] < e.clientY - offset.top &&
                 e.clientY - offset.top < coords[count]['ymax']) {
-                swal(
-                    'Okay!',
-                    'You are right!',
-                    'success'
-                );
+                swal({
+                    title: 'Okay!',
+                    text: 'You are right!',
+                    type: 'success',
+                    width: 800,
+                    padding: 100,
+                    confirmButtonClass: 'btn-confirm'
+                });
                 hit++;
             } else {
-                swal(
-                    'Oops...',
-                    'You missed!',
-                    'error'
-                )
+                swal({
+                    title: 'Oops..',
+                    text: 'You missed!',
+                    type: 'error',
+                    width: 800,
+                    padding: 100,
+                    confirmButtonClass: 'btn-confirm'
+                })
             }
             //drawing the correct bounding box
             drawBox(coords[count]['xmin'], coords[count]['ymin'],
@@ -204,10 +221,11 @@ $(document).ready(function () {
                 $td = $('<td>');
                 $td.text(data[i].score);
                 $tr.append($td);
-                $('#scoreboard table tbody').append($tr);
+                var $scoreboard = $('#scoreboard');
+                $scoreboard.find('table tbody').append($tr);
                 $('body').append($('<link rel="stylesheet"/>').attr('href', '/css/scoreboard.css'));
             }
-            $('#scoreboard').css('display', 'inline')
+            $scoreboard.css('display', 'inline')
         }
     };
     var getDoctorData = function () {
@@ -229,10 +247,10 @@ $(document).ready(function () {
             type: 'POST',
             dataType: 'json',
             success: function (data) {
-                swal(data.result, null, data.status);
+                swal({title: data.result, type: data.status, timer: 1000, showConfirmButton: false});
             },
             error: function () {
-                swal('Ajax error!', null, 'error');
+                swal({title: 'Ajax error!',type: 'error', timer: 1000, showConfirmButton: false});
             }
         })
     });
@@ -246,14 +264,12 @@ $(document).ready(function () {
                     swal('Database Cleared!', null, 'success');
                     $('#scoreboard').css('display', 'none')
                 } else {
-                    swal(err.err, null, 'error')
+                    swal({title: err.err, type: 'error', showConfirmButton: false, timer: 2000})
                 }
             },
             error: function () {
-                swal('Ajax Error!', null, 'error')
+                swal({title: 'Ajax Error!', type: 'error', showConfirmButton: false, timer: 2000})
             }
         })
     })
 });
-
-

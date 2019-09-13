@@ -1,18 +1,20 @@
-<div id="header" >
+<div id="header">
     <div class="hoja">InferVision</div>
+    <div id="buttons">
+        <div class="button_container">
+            <a id='next_button' class="button turquoise"><span>✓</span>Next</a>
+        </div>
+
+        <div class="button_container">
+            <a id='display_button' class="button turquoise"><span>✓</span>Score</a>
+        </div>
+
+        <div class="button_container">
+            <a id='clear_button' class="button red"><span>✓</span>Clear</a>
+        </div>
+    </div>
 </div>
 <div id="wrapper">
-
-    <div class="button_container">
-        <a id='next_button' class="button turquoise"><span>✓</span>Next Challenge</a>
-    </div>
-
-    <div class="button_container">
-        <a id='display_button' class="button turquoise"><span>✓</span>Display Scoreboard</a>
-    </div>
-    <div class="button_container">
-        <a id='clear_button' class="button red"><span>✓</span>Clear DataBase</a>
-    </div>
     <div id="scoreboard" style="display: none">
         <h2>HIGHSCORES</h2>
         <div style="width: 90%">
@@ -31,14 +33,14 @@
             </div>
         </div>
     </div>
-    <div id="slider">
-        <span id="infoSlider"></span>
-    </div>
+
     <div id="drag">
         <canvas id="myCanvas"></canvas>
         <img id="image">
     </div>
 </div>
+<div id="slider"></div>
+
 <div class="container" id="form_container">
     <form id="contact">
         <h3>Leave Your Contacts</h3>
@@ -64,7 +66,3 @@
 <link rel="stylesheet" href="/css/container.css">
 <script type="text/javascript" src="/paper/paper-core.js"></script>
 <script type="text/javascript" src="/js/main.js"></script>
-<!--<script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.21/p5.min.js'></script>-->
-<!--<script src='https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.3/dat.gui.min.js'></script>-->
-<!--<script src="js/curves.js"></script>-->
-<!--<link rel="stylesheet" href="css/curve.css">-->

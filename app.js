@@ -48,10 +48,10 @@ db.once('open', function () {
     app.use(bodyParser.json());
 //http request routing
     app.get('/', function (req, res) {
-        res.render('home')
+        res.render('home', {title: 'Infervision Teaser'})
     });
 
-    app.listen(process.env.PORT || 5000, function () {
+    app.listen(process.env.PORT || 5000, 'localhost', function () {
         console.log('Example app listening on port 5000!')
     });
 

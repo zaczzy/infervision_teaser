@@ -16,10 +16,9 @@ body {
     color:#000;
     font-family: "Roboto", Helvetica, Arial, sans-serif;
     font-weight: 100;
-    font-size: 20px;
     line-height: 30px;
     overflow: scroll;
-    background-color: rgb(137, 207, 240);
+    background-color: #1E6CC7
 }
 
 .container {
@@ -143,13 +142,12 @@ fieldset {
     color: #888;
 }
 
-.button_container { width: 500px; text-align: center; margin: auto}
+.button_container { text-align: center; margin: auto; display: inline-block;}
 
 .button {
     display: block;
     z-index: 3;
-    height: 150px;
-    line-height: 150px;
+    line-height: 140px;
     padding-right: 30px;
     padding-left: 70px;
     position: relative;
@@ -206,4 +204,10 @@ fieldset {
 }
 .button.red {
     background: #BC1E22;
+}
+
+#buttons {
+    display: inline-block;
+    position: absolute;
+    right: 0;
 }

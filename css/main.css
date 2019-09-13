@@ -47,12 +47,26 @@ a:active {
     position: absolute;
 }
 
-#slider {
-    width: 80%;
-    height: 100px;
-    margin-left: 10%;
-    z-index: 3;
-}
+
 #header {
     background-color: #0997e2;
+}
+.btn-confirm {
+    width: 40%;
+    height: 180px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+.btn-cancel{
+    width: 40%;
+    height: 180px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+
+#vertical-slider {
+    height: 150px;
+    margin-left: 30px;
 }
